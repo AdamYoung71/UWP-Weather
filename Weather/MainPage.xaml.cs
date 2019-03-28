@@ -26,5 +26,10 @@ namespace Weather
         {
             this.InitializeComponent();
         }
+
+        private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+
+        }
     }
 }
