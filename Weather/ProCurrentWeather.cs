@@ -13,6 +13,26 @@ namespace ProCurrentWeather//当前天气情况高级版（使用经纬度获取
 {
     class ProCurrentWeather
     {
+        public async static Task<Root> GetProCurrentWeather(double lat, double lon)
+        {
+            string latitude = Convert.ToString(lat);
+            string longitude = Convert.ToString(lon);
+            var http = new HttpClient();
+            //var response = await http.GetAsync("https://api.seniverse.com/v3/pro/weather/grid/now.json?key=9b7few3mmyrhzfp1&location=39.865927:116.359805");
+            var response = await http.GetAsync("https://api.seniverse.com/v3/pro/weather/grid/now.json?key=9b7few3mmyrhzfp1&location=" + latitude + ":" + longitude);
+            var result = await response.Content.ReadAsStringAsync();
+            var serializer = new DataContractJsonSerializer(typeof(Root));
+
+            var ms = new MemoryStream(Encoding.UTF8.GetBytes(result));
+            var data = (Root)serializer.ReadObject(ms);
+
+            return data;
+        }
+
+        internal static Task GetProCurrentWeather(AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

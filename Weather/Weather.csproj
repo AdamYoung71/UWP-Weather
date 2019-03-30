@@ -127,6 +127,7 @@
     <Compile Include="ProCurrentWeather.cs" />
     <Compile Include="ProForecast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CityToLocation.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -135,6 +136,46 @@
     <None Include="Weather_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\WeatherIcons\0.png" />
+    <Content Include="Assets\WeatherIcons\1.png" />
+    <Content Include="Assets\WeatherIcons\10.png" />
+    <Content Include="Assets\WeatherIcons\11.png" />
+    <Content Include="Assets\WeatherIcons\12.png" />
+    <Content Include="Assets\WeatherIcons\13.png" />
+    <Content Include="Assets\WeatherIcons\14.png" />
+    <Content Include="Assets\WeatherIcons\15.png" />
+    <Content Include="Assets\WeatherIcons\16.png" />
+    <Content Include="Assets\WeatherIcons\17.png" />
+    <Content Include="Assets\WeatherIcons\18.png" />
+    <Content Include="Assets\WeatherIcons\19.png" />
+    <Content Include="Assets\WeatherIcons\2.png" />
+    <Content Include="Assets\WeatherIcons\20.png" />
+    <Content Include="Assets\WeatherIcons\21.png" />
+    <Content Include="Assets\WeatherIcons\22.png" />
+    <Content Include="Assets\WeatherIcons\23.png" />
+    <Content Include="Assets\WeatherIcons\24.png" />
+    <Content Include="Assets\WeatherIcons\25.png" />
+    <Content Include="Assets\WeatherIcons\26.png" />
+    <Content Include="Assets\WeatherIcons\27.png" />
+    <Content Include="Assets\WeatherIcons\28.png" />
+    <Content Include="Assets\WeatherIcons\29.png" />
+    <Content Include="Assets\WeatherIcons\3.png" />
+    <Content Include="Assets\WeatherIcons\30.png" />
+    <Content Include="Assets\WeatherIcons\31.png" />
+    <Content Include="Assets\WeatherIcons\32.png" />
+    <Content Include="Assets\WeatherIcons\33.png" />
+    <Content Include="Assets\WeatherIcons\34.png" />
+    <Content Include="Assets\WeatherIcons\35.png" />
+    <Content Include="Assets\WeatherIcons\36.png" />
+    <Content Include="Assets\WeatherIcons\37.png" />
+    <Content Include="Assets\WeatherIcons\38.png" />
+    <Content Include="Assets\WeatherIcons\4.png" />
+    <Content Include="Assets\WeatherIcons\5.png" />
+    <Content Include="Assets\WeatherIcons\6.png" />
+    <Content Include="Assets\WeatherIcons\7.png" />
+    <Content Include="Assets\WeatherIcons\8.png" />
+    <Content Include="Assets\WeatherIcons\9.png" />
+    <Content Include="Assets\WeatherIcons\99.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -158,6 +199,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.3</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Font\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

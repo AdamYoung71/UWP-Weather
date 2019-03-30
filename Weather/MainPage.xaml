@@ -49,14 +49,18 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="5*"/>
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
                         <RelativePanel Name="MainInfo" Grid.Column="1" >
-                            <Image Name="WeatherImg" Height="150" Width="150" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                            <TextBlock Name="CurrentTemp" Height="150" FontSize="30" RelativePanel.RightOf="WeatherImg"/>
+                            <TextBlock Name="Gap" Visibility="Collapsed" Width="100" Height="Auto" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                            <Image Name="WeatherImg" Height="150" Width="150" RelativePanel.LeftOf="Gap" Source="Assets/WeatherIcons/0.png"/>
+                            <TextBlock Name="CurrentTemp" Height="150" Width="Auto" Margin="0,24,0,0" FontSize="100"  FontWeight="Bold" RelativePanel.RightOf="Gap" Text="16℃"/>
+                        </RelativePanel>
+                        <RelativePanel Name="Details" Grid.Column="1" Grid.Row="1">
+                            <TextBlock Name="DetailText" Width="300" Height="Auto" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="20"/>
                         </RelativePanel>
                         
                     </Grid>
