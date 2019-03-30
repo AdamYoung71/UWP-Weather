@@ -8,34 +8,59 @@
     mc:Ignorable="d"
     Background="{StaticResource SystemControlChromeHighAcrylicWindowMediumBrush}">
 
+    
+    
+    
+    
     <Grid>
         <!--界面上方的控制栏-->
-        <CommandBar>        
+        <CommandBar>
             <AppBarButton Label="Like" Icon="Like"/>
             <AppBarButton Label="Dislike" Icon="Favorite"/>
+            <AppBarButton Label="Refresh" Icon="Refresh"/>
             <CommandBar.SecondaryCommands>
-                <AppBarButton Label="Like" />
-                <AppBarButton Label="Dislike" />
+                <AppBarButton Label="About" Icon="Character"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
         
         
         <!--导航视图-->
-        <NavigationView Header="天气">
+        <NavigationView Header="天气" >
             <NavigationView.MenuItems >
-                <NavigationViewItem Icon="Home" Content="主页" Tag="SamplePage1" Tapped="NavigationViewItem_Tapped" x:Name="HomePage"/>
-                <NavigationViewItem Icon="OutlineStar" Content="收藏" Tag="SamplePage2" />
-                <NavigationViewItem Icon="Refresh" Content="刷新" Tag="SamplePage3" />
+                <NavigationViewItem Icon="Home" Content="主页"  x:Name="HomePage"/>
+                <NavigationViewItem Icon="OutlineStar" Content="收藏" />
+               
             </NavigationView.MenuItems>
             
             <!--搜索框-->
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
+                <AutoSuggestBox QueryIcon="Find" QuerySubmitted="AutoSuggestBox_QuerySubmitted" 
+                 PlaceholderText="请输入城市名" />
+                
             </NavigationView.AutoSuggestBox>
             
             <!--主页面-->
             <Frame x:Name="contentFrame" Margin="24">
-                
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <Grid Name="FrameGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <RelativePanel Name="MainInfo" Grid.Column="1" >
+                            <Image Name="WeatherImg" Height="150" Width="150" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                            <TextBlock Name="CurrentTemp" Height="150" FontSize="30" RelativePanel.RightOf="WeatherImg"/>
+                        </RelativePanel>
+                        
+                    </Grid>
+                </ScrollViewer>
             </Frame>
         </NavigationView>
 
