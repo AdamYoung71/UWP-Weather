@@ -6,10 +6,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{StaticResource SystemControlChromeHighAcrylicWindowMediumBrush}">
-
-    
-    
+    Background="{StaticResource SystemControlChromeHighAcrylicWindowMediumBrush}"
+    Loaded="Page_Loaded">
+<!--
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup>
+            <VisualState x:Name="Normal">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="1007"/>
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="contentFrame.Width" Value="800"/>
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+    -->
     
     
     <Grid>
@@ -25,22 +37,28 @@
         
         
         <!--导航视图-->
-        <NavigationView Header="天气" >
+        <NavigationView Header="天气" Background="{StaticResource SystemControlChromeHighAcrylicWindowMediumBrush}">
             <NavigationView.MenuItems >
                 <NavigationViewItem Icon="Home" Content="主页"  x:Name="HomePage"/>
                 <NavigationViewItem Icon="OutlineStar" Content="收藏" />
                
             </NavigationView.MenuItems>
             
+
             <!--搜索框-->
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" QuerySubmitted="AutoSuggestBox_QuerySubmitted" 
-                 PlaceholderText="请输入城市名" />
+                <AutoSuggestBox QueryIcon="Find" 
+                                QuerySubmitted="AutoSuggestBox_QuerySubmitted" 
+                                PlaceholderText="请输入城市名" 
+                                TextChanged="AutoSuggestBox_TextChanged"
+                                />
+                
                 
             </NavigationView.AutoSuggestBox>
             
             <!--主页面-->
             <Frame x:Name="contentFrame" Margin="24">
+                
                 <ScrollViewer HorizontalScrollBarVisibility="Auto">
                     <Grid Name="FrameGrid">
                         <Grid.RowDefinitions>
@@ -55,13 +73,19 @@
                         </Grid.ColumnDefinitions>
 
                         <RelativePanel Name="MainInfo" Grid.Column="1" >
+                          
+                            
                             <TextBlock Name="Gap" Visibility="Collapsed" Width="100" Height="Auto" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
                             <Image Name="WeatherImg" Height="150" Width="150" RelativePanel.LeftOf="Gap" Source="Assets/WeatherIcons/0.png"/>
-                            <TextBlock Name="CurrentTemp" Height="150" Width="Auto" Margin="0,24,0,0" FontSize="100"  FontWeight="Bold" RelativePanel.RightOf="Gap" Text="16℃"/>
+                            <TextBlock Name="CurrentTemp" Height="150" Width="Auto" Margin="0,0,0,0" FontSize="100"  IsColorFontEnabled="True" RelativePanel.RightOf="Gap" Text="16℃" Foreground="White"/>
+                            <TextBlock Name="CityName" Height="Auto" Width="Auto" RelativePanel.AlignLeftWithPanel="True" Margin="24" FontSize="30" Text="北京"/>
+                            <TextBlock Name="lastUpdate" RelativePanel.AlignBottomWith="CityName" Text="最后更新" Margin="24,58,-68,-24"/>
                         </RelativePanel>
                         <RelativePanel Name="Details" Grid.Column="1" Grid.Row="1">
                             <TextBlock Name="DetailText" Width="300" Height="Auto" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="20"/>
+                            
                         </RelativePanel>
+                        
                         
                     </Grid>
                 </ScrollViewer>
