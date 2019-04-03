@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{StaticResource SystemControlChromeHighAcrylicWindowMediumBrush}"
-    Loaded="Page_Loaded">
-<!--
+    >
+    <!--
     <VisualStateManager.VisualStateGroups>
         <VisualStateGroup>
             <VisualState x:Name="Normal">
@@ -38,22 +38,22 @@
         
         <!--导航视图-->
         <NavigationView Header="天气" Background="{StaticResource SystemControlChromeHighAcrylicWindowMediumBrush}">
-            <NavigationView.MenuItems >
+            <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="主页"  x:Name="HomePage"/>
                 <NavigationViewItem Icon="OutlineStar" Content="收藏" />
+                <NavigationViewItemSeparator/>
                
             </NavigationView.MenuItems>
             
 
             <!--搜索框-->
-            <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" 
+            <NavigationView.AutoSuggestBox >
+                <AutoSuggestBox Name="myAutoSuggestBox"
+                                QueryIcon="Find" 
                                 QuerySubmitted="AutoSuggestBox_QuerySubmitted" 
                                 PlaceholderText="请输入城市名" 
                                 TextChanged="AutoSuggestBox_TextChanged"
-                                />
-                
-                
+                                SuggestionChosen="MyAutoSuggestBox_SuggestionChosen"/>
             </NavigationView.AutoSuggestBox>
             
             <!--主页面-->
@@ -82,7 +82,7 @@
                             <TextBlock Name="lastUpdate" RelativePanel.AlignBottomWith="CityName" Text="最后更新" Margin="24,58,-68,-24"/>
                         </RelativePanel>
                         <RelativePanel Name="Details" Grid.Column="1" Grid.Row="1">
-                            <TextBlock Name="DetailText" Width="300" Height="Auto" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="20"/>
+                            <TextBlock Name="Tomorrow" Width="300" Height="Auto" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="20"/>
                             
                         </RelativePanel>
                         

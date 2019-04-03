@@ -34,9 +34,6 @@ namespace CityToLocation
             throw new NotImplementedException();
         }
     }
-}
-
-
     public class Neighborhood
     {
         /// <summary>
@@ -144,4 +141,8 @@ namespace CityToLocation
         /// </summary>
         public List<Geocodes> geocodes { get; set; }
     }
+}
+
+
+    
 
