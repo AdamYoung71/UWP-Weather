@@ -8,25 +8,12 @@
     mc:Ignorable="d"
     Background="{StaticResource SystemControlChromeHighAcrylicWindowMediumBrush}"
     >
-    <!--
-    <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup>
-            <VisualState x:Name="Normal">
-                <VisualState.StateTriggers>
-                    <AdaptiveTrigger MinWindowWidth="1007"/>
-                </VisualState.StateTriggers>
-                <VisualState.Setters>
-                    <Setter Target="contentFrame.Width" Value="800"/>
-                </VisualState.Setters>
-            </VisualState>
-        </VisualStateGroup>
-    </VisualStateManager.VisualStateGroups>
-    -->
+    
     
     
     <Grid>
         <!--界面上方的控制栏-->
-        <CommandBar>
+        <CommandBar Visibility="Visible" >
             <AppBarButton Label="Like" Icon="Like"/>
             <AppBarButton Label="Dislike" Icon="Favorite"/>
             <AppBarButton Label="Refresh" Icon="Refresh"/>
@@ -34,15 +21,21 @@
                 <AppBarButton Label="About" Icon="Character"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
-        
-        
+
+
         <!--导航视图-->
-        <NavigationView Header="天气" Background="{StaticResource SystemControlChromeHighAcrylicWindowMediumBrush}">
+        <NavigationView x:Name="NavView"
+                        Loaded="NavView_Loaded"
+                        IsBackButtonVisible="Visible"
+                        ItemInvoked="NavigationView_ItemInvoked"
+                        SelectionChanged="NavView_SelectionChanged"
+                        BackRequested="NavView_BackRequested">
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Home" Content="主页"  x:Name="HomePage"/>
-                <NavigationViewItem Icon="OutlineStar" Content="收藏" />
+                <NavigationViewItem Icon="Home" Content="主页"  x:Name="HomePage" Tag="MainPage"/>
+                <NavigationViewItem Icon="OutlineStar" Content="收藏" Tag="Collection"/>
+                
                 <NavigationViewItemSeparator/>
-               
+              
             </NavigationView.MenuItems>
             
 
@@ -57,9 +50,10 @@
             </NavigationView.AutoSuggestBox>
             
             <!--主页面-->
-            <Frame x:Name="contentFrame" Margin="24">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <Frame x:Name="contentFrame" Margin="24">
                 
-                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                
                     <Grid Name="FrameGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -88,8 +82,9 @@
                         
                         
                     </Grid>
-                </ScrollViewer>
-            </Frame>
+               
+                </Frame>
+            </ScrollViewer>
         </NavigationView>
 
 
