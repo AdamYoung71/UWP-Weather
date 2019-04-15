@@ -9,17 +9,17 @@ using System.Runtime.Serialization;
 using System.IO;
 using Windows.UI.Xaml.Controls;
 
-namespace LifeSuggestionAPI//六项生活指数API
 
+namespace Air
 {
-    class LifeSuggestionAPI
+    class air
     {
-        public async static Task<Root> GetSuggestion(string city)
+        public async static Task<Root> getAir(string city)
         {
             var location_cd = city;
             var http = new HttpClient();
-            //var response = await http.GetAsync("https://api.seniverse.com/v3/life/suggestion.json?key=9b7few3mmyrhzfp1&location=shanghai&language=zh-Hans");
-            var response = await http.GetAsync("https://api.seniverse.com/v3/life/suggestion.json?key=9b7few3mmyrhzfp1&location=" + location_cd + "&language=zh-Hans");
+            //var response = await http.GetAsync("https://api.seniverse.com/v3/air/now.json?key=SrcvbANXIm08Wx519&location=beijing&language=zh-Hans&scope=city");
+            var response = await http.GetAsync("https://api.seniverse.com/v3/air/now.json?key=SrcvbANXIm08Wx519&location=" + location_cd + "&language=zh-Hans&scope=city");
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof(Root));
 
@@ -29,20 +29,16 @@ namespace LifeSuggestionAPI//六项生活指数API
             return data;
         }
 
-       
+
     }
-
-
-
-
     public class Location
     {
         /// <summary>
-        /// WTW3SJ5ZBJUY
+        /// WX4FBXXFKE4F
         /// </summary>
         public string id { get; set; }
         /// <summary>
-        /// 上海
+        /// 北京
         /// </summary>
         public string name { get; set; }
         /// <summary>
@@ -50,7 +46,7 @@ namespace LifeSuggestionAPI//六项生活指数API
         /// </summary>
         public string country { get; set; }
         /// <summary>
-        /// 上海,上海,中国
+        /// 北京,北京,中国
         /// </summary>
         public string path { get; set; }
         /// <summary>
@@ -63,104 +59,60 @@ namespace LifeSuggestionAPI//六项生活指数API
         public string timezone_offset { get; set; }
     }
 
-    public class Car_washing
+    public class City
     {
         /// <summary>
-        /// 较适宜
+        /// 80
         /// </summary>
-        public string brief { get; set; }
+        public string aqi { get; set; }
         /// <summary>
-        /// 
+        /// 59
         /// </summary>
-        public string details { get; set; }
+        public string pm25 { get; set; }
+        /// <summary>
+        /// 105
+        /// </summary>
+        public string pm10 { get; set; }
+        /// <summary>
+        /// 6
+        /// </summary>
+        public string so2 { get; set; }
+        /// <summary>
+        /// 62
+        /// </summary>
+        public string no2 { get; set; }
+        /// <summary>
+        /// 0.600
+        /// </summary>
+        public string co { get; set; }
+        /// <summary>
+        /// 34
+        /// </summary>
+        public string o3 { get; set; }
+        /// <summary>
+        /// PM2.5
+        /// </summary>
+        public string primary_pollutant { get; set; }
+        /// <summary>
+        /// 2019-04-15T10:00:00+08:00
+        /// </summary>
+        public string last_update { get; set; }
+        /// <summary>
+        /// 良
+        /// </summary>
+        public string quality { get; set; }
     }
 
-    public class Dressing
+    public class Air
     {
         /// <summary>
-        /// 较冷
+        /// City
         /// </summary>
-        public string brief { get; set; }
+        public City city { get; set; }
         /// <summary>
-        /// 
+        /// Stations
         /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Flu
-    {
-        /// <summary>
-        /// 较易发
-        /// </summary>
-        public string brief { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Sport
-    {
-        /// <summary>
-        /// 较适宜
-        /// </summary>
-        public string brief { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Travel
-    {
-        /// <summary>
-        /// 适宜
-        /// </summary>
-        public string brief { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Uv
-    {
-        /// <summary>
-        /// 弱
-        /// </summary>
-        public string brief { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Suggestion
-    {
-        /// <summary>
-        /// Car_washing
-        /// </summary>
-        public Car_washing car_washing { get; set; }
-        /// <summary>
-        /// Dressing
-        /// </summary>
-        public Dressing dressing { get; set; }
-        /// <summary>
-        /// Flu
-        /// </summary>
-        public Flu flu { get; set; }
-        /// <summary>
-        /// Sport
-        /// </summary>
-        public Sport sport { get; set; }
-        /// <summary>
-        /// Travel
-        /// </summary>
-        public Travel travel { get; set; }
-        /// <summary>
-        /// Uv
-        /// </summary>
-        public Uv uv { get; set; }
+        public string stations { get; set; }
     }
 
     public class Results
@@ -170,11 +122,11 @@ namespace LifeSuggestionAPI//六项生活指数API
         /// </summary>
         public Location location { get; set; }
         /// <summary>
-        /// Suggestion
+        /// Air
         /// </summary>
-        public Suggestion suggestion { get; set; }
+        public Air air { get; set; }
         /// <summary>
-        /// 2019-03-22T22:40:54+08:00
+        /// 2019-04-15T10:00:00+08:00
         /// </summary>
         public string last_update { get; set; }
     }
@@ -188,3 +140,4 @@ namespace LifeSuggestionAPI//六项生活指数API
     }
 
 }
+

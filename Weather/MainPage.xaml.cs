@@ -74,11 +74,14 @@ namespace Weather
                 double Lon = Convert.ToDouble(Locations[1]);
                 var myCurrentWeather = await ProCurrentWeather.ProCurrentWeather.GetProCurrentWeather(Lon, Lat);//实例化高级当前天气API
                 var myForecast = await ProForecast.ProForecast.GetProForecast(Lon, Lat);//实例化高级天气预报API
-                                                                                        /*************************************/
+                var myAir = await Air.air.getAir(cityName);
+                
+                /*************************************/
 
                 CurrentTemp.Text = myWeather.results[0].now.temperature + "℃";
-                CityName.Text = cityName;
+                CityName.Text = myFiveDays.results[0].daily[0].text_day;
 
+               
                 var weatherCode = "/Assets/WeatherIcons/" + Convert.ToString(myWeather.results[0].now.code) + ".png";
                 WeatherImg.Source = new BitmapImage(new Uri(WeatherImg.BaseUri, weatherCode));
 

@@ -9,17 +9,16 @@ using System.Runtime.Serialization;
 using System.IO;
 using Windows.UI.Xaml.Controls;
 
-namespace LifeSuggestionAPI//六项生活指数API
-
+namespace FiveDays
 {
-    class LifeSuggestionAPI
+    class FiveDays
     {
-        public async static Task<Root> GetSuggestion(string city)
+        public async static Task<Root> getFiveDays(string city)
         {
             var location_cd = city;
             var http = new HttpClient();
-            //var response = await http.GetAsync("https://api.seniverse.com/v3/life/suggestion.json?key=9b7few3mmyrhzfp1&location=shanghai&language=zh-Hans");
-            var response = await http.GetAsync("https://api.seniverse.com/v3/life/suggestion.json?key=9b7few3mmyrhzfp1&location=" + location_cd + "&language=zh-Hans");
+            //var response = await http.GetAsync("https://api.seniverse.com/v3/weather/daily.json?key=your_api_key&location=beijing&language=zh-Hans&unit=c&start=0&days=5");
+            var response = await http.GetAsync("https://api.seniverse.com/v3/weather/daily.json?key=SrcvbANXIm08Wx519&location=" + location_cd + "&language=zh-Hans&unit=c&start=0&days=5");
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof(Root));
 
@@ -28,21 +27,17 @@ namespace LifeSuggestionAPI//六项生活指数API
 
             return data;
         }
-
-       
     }
-
-
 
 
     public class Location
     {
         /// <summary>
-        /// WTW3SJ5ZBJUY
+        /// WX4FBXXFKE4F
         /// </summary>
         public string id { get; set; }
         /// <summary>
-        /// 上海
+        /// 北京
         /// </summary>
         public string name { get; set; }
         /// <summary>
@@ -50,7 +45,7 @@ namespace LifeSuggestionAPI//六项生活指数API
         /// </summary>
         public string country { get; set; }
         /// <summary>
-        /// 上海,上海,中国
+        /// 北京,北京,中国
         /// </summary>
         public string path { get; set; }
         /// <summary>
@@ -63,104 +58,56 @@ namespace LifeSuggestionAPI//六项生活指数API
         public string timezone_offset { get; set; }
     }
 
-    public class Car_washing
+    public class Daily
     {
         /// <summary>
-        /// 较适宜
+        /// 2019-04-15
         /// </summary>
-        public string brief { get; set; }
+        public DateTime date { get; set; }
+        /// <summary>
+        /// 多云
+        /// </summary>
+        public string text_day { get; set; }
+        /// <summary>
+        /// 4
+        /// </summary>
+        public string code_day { get; set; }
+        /// <summary>
+        /// 多云
+        /// </summary>
+        public string text_night { get; set; }
+        /// <summary>
+        /// 4
+        /// </summary>
+        public string code_night { get; set; }
+        /// <summary>
+        /// 26
+        /// </summary>
+        public string high { get; set; }
+        /// <summary>
+        /// 12
+        /// </summary>
+        public string low { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Dressing
-    {
+        public string precip { get; set; }
         /// <summary>
-        /// 较冷
+        /// 南
         /// </summary>
-        public string brief { get; set; }
+        public string wind_direction { get; set; }
         /// <summary>
-        /// 
+        /// 180
         /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Flu
-    {
+        public string wind_direction_degree { get; set; }
         /// <summary>
-        /// 较易发
+        /// 15
         /// </summary>
-        public string brief { get; set; }
+        public string wind_speed { get; set; }
         /// <summary>
-        /// 
+        /// 3
         /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Sport
-    {
-        /// <summary>
-        /// 较适宜
-        /// </summary>
-        public string brief { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Travel
-    {
-        /// <summary>
-        /// 适宜
-        /// </summary>
-        public string brief { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Uv
-    {
-        /// <summary>
-        /// 弱
-        /// </summary>
-        public string brief { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string details { get; set; }
-    }
-
-    public class Suggestion
-    {
-        /// <summary>
-        /// Car_washing
-        /// </summary>
-        public Car_washing car_washing { get; set; }
-        /// <summary>
-        /// Dressing
-        /// </summary>
-        public Dressing dressing { get; set; }
-        /// <summary>
-        /// Flu
-        /// </summary>
-        public Flu flu { get; set; }
-        /// <summary>
-        /// Sport
-        /// </summary>
-        public Sport sport { get; set; }
-        /// <summary>
-        /// Travel
-        /// </summary>
-        public Travel travel { get; set; }
-        /// <summary>
-        /// Uv
-        /// </summary>
-        public Uv uv { get; set; }
+        public string wind_scale { get; set; }
     }
 
     public class Results
@@ -170,11 +117,11 @@ namespace LifeSuggestionAPI//六项生活指数API
         /// </summary>
         public Location location { get; set; }
         /// <summary>
-        /// Suggestion
+        /// Daily
         /// </summary>
-        public Suggestion suggestion { get; set; }
+        public List<Daily> daily { get; set; }
         /// <summary>
-        /// 2019-03-22T22:40:54+08:00
+        /// 2019-04-15T11:00:00+08:00
         /// </summary>
         public string last_update { get; set; }
     }
